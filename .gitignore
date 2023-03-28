@@ -1,3 +1,17 @@
 .idea
+
+
+# Server
 server/venv
 server/credentials.py
+# Client
+node_modules
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.env
+dist
+.DS_Store
+
