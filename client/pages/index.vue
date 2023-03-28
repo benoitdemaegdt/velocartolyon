@@ -1,7 +1,7 @@
 <template>
   <div class="relative h-full w-full">
     <div id="map" class="h-full" />
-    <button type="button" class="absolute bottom-2 right-2 inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" @click="displayFilters">
+    <button type="button" class="absolute bottom-2 md:bottom-4 right-2 md:right-4 inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" @click="displayFilters">
       <Icon name="mdi:tune" size="1.5em" />
     </button>
   </div>
