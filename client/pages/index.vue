@@ -6,6 +6,7 @@
 
 <script setup>
 import style from '@/assets/style.json'
+import sample from '@/assets/sample.json'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 
@@ -24,5 +25,18 @@ onMounted(() => {
   })
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left')
   map.addControl(new maplibregl.FullscreenControl(), 'top-right')
+
+  map.on('load', () => {
+    map.addSource('poi', { type: 'geojson', data: sample })
+    map.addLayer({
+      id: 'poi',
+      type: 'circle',
+      source: 'poi',
+      paint: {
+        'circle-radius': 5,
+        'circle-color': '#ef4444'
+      }
+    })
+  })
 })
 </script>
