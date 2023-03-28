@@ -20,6 +20,16 @@ def get_gps_coordinates(address):
     else:
         return None
     
+def get_nearest_adress(lat,long):
+    url = f"https://maps.googleapis.com/maps/api/geocode/json?latlng={lat},{long}&key={API_KEY}"
+    response = requests.get(url)
+    data = response.json()
+    if data["status"] == "OK":
+        address = data["results"][0]["formatted_address"]
+        return address
+    else:
+        return None
+    
 def define_str_point(lat_value,long_value):
     point = f"{lat_value},{long_value}"
     return point
@@ -60,6 +70,5 @@ if __name__ == '__main__':
     address_end = "10 rue de Montbrillant 69003 Lyon"
     # Main function
     get_traject(address_start,address_end)
-    
-    
+
 
