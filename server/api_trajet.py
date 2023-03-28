@@ -20,7 +20,7 @@ def get_gps_coordinates(address):
     else:
         return None
 
-def get_nearest_adress(lat,long):
+def get_nearest_address(lat,long):
     url = f"https://maps.googleapis.com/maps/api/geocode/json?latlng={lat},{long}&key={API_KEY}"
     response = requests.get(url)
     data = response.json()
@@ -46,16 +46,16 @@ def call_api(start_point, end_point):
             list_coor.append([path_steps[i]["start_location"]["lng"],path_steps[i]["start_location"]["lat"]])
         list_coor.append([path_steps[i]["end_location"]["lng"],path_steps[i]["end_location"]["lat"]])
     output_json = {"type": "Feature","geometry": {"type": "LineString","coordinates": list_coor}}
-    print(output_json)
+    return output_json
 
 
-def get_traject(adress_start,adress_end):
+def get_traject(address_start,address_end):
     start_lat,start_long = get_gps_coordinates(address_start)
     end_lat,end_long = get_gps_coordinates(address_end)
     start_point = define_str_point(start_lat,start_long)
     end_point = define_str_point(end_lat,end_long)
-    call_api(start_point,end_point)
-
+    output_json = call_api(start_point,end_point)
+    return output_json
 
 
 if __name__ == '__main__':
