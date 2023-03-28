@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss'],
-  tailwindcss: { viewer: false },
-})
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon'],
+  tailwindcss: { viewer: false }
+});

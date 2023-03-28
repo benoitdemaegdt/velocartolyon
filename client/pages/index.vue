@@ -1,6 +1,9 @@
 <template>
-  <div class="h-full w-full">
+  <div class="relative h-full w-full">
     <div id="map" class="h-full" />
+    <button type="button" class="absolute bottom-2 right-2 inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" @click="displayFilters">
+      <Icon name="mdi:tune" size="1.5em" />
+    </button>
   </div>
 </template>
 
@@ -16,12 +19,17 @@ definePageMeta({
   layout: 'fullscreen'
 })
 
+function displayFilters () {
+  console.log('displayFilters')
+}
+
 onMounted(() => {
   const map = new maplibregl.Map({
     container: 'map',
     style,
     center: [4.8312188, 45.757198],
-    zoom: 13
+    zoom: 13,
+    attributionControl: false
   })
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left')
   map.addControl(new maplibregl.FullscreenControl(), 'top-right')
