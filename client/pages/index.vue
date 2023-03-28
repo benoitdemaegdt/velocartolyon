@@ -5,9 +5,9 @@
 </template>
 
 <script setup>
-import style from '@/assets/style.json'
-import sample from '@/assets/sample.json'
 import maplibregl from 'maplibre-gl'
+import style from '@/assets/style.json'
+import sample from '@/assets/big-sample.json'
 import 'maplibre-gl/dist/maplibre-gl.css'
 
 // https://github.com/nuxt/framework/issues/3587
@@ -34,18 +34,18 @@ onMounted(() => {
       source: 'poi',
       paint: {
         'circle-radius': 5,
-        'circle-color': ['get', 'color'],
+        'circle-color': ['get', 'color']
       }
     })
     map.on('click', 'poi', (e) => {
       const { properties } = e.features[0]
       new maplibregl.Popup({ closeButton: false, closeOnClick: true })
-          .setLngLat(e.lngLat)
-          .setHTML(`
+        .setLngLat(e.lngLat)
+        .setHTML(`
             <h3>${properties.type_signalement}</h3>
             <div>${properties.description}</div>
           `)
-          .addTo(map)
+        .addTo(map)
     })
     map.on('mouseenter', 'poi', () => map.getCanvas().style.cursor = 'pointer')
     map.on('mouseleave', 'poi', () => map.getCanvas().style.cursor = '')
