@@ -28,12 +28,19 @@ def geo_df_signalements(nb_points):
     ts_box = (1679125015, 1679992616)
     nw_corner = (4.801246, 45.779813)
     se_corner = (4.883468, 45.716576)
+    # # Liste complète pour prochaine version
+
+    # liste_types_signalements = [
+    #     'Chaussée ou trottoir détérioré', "Pont, passerelle, trémie détérioré", "Marquage au sol effacé ou illisible",
+    #     "Plaque au sol descellée, manquante...", "Armoire ouverte ou détériorée", "Mobilier urbain détérioré ou non remplacé",
+    #     "Nuisances liées à des chantiers de travaux publics", "Panneau de signalisation détérioré ou non remplacé",
+    #     "Feu tricolore ou sonore en panne ou détérioré", "Véhicule épave/abandonné", "Stationnement abusif et/ou gênant"
+    #                         ]
     liste_types_signalements = [
-        'Chaussée ou trottoir détérioré', "Pont, passerelle, trémie détérioré", "Marquage au sol effacé ou illisible",
-        "Plaque au sol descellée, manquante...", "Armoire ouverte ou détériorée", "Mobilier urbain détérioré ou non remplacé",
-        "Nuisances liées à des chantiers de travaux publics", "Panneau de signalisation détérioré ou non remplacé",
-        "Feu tricolore ou sonore en panne ou détérioré", "Véhicule épave/abandonné", "Stationnement abusif et/ou gênant"
-                            ]
+        "Pont, passerelle, trémie détérioré",
+        "Chaussée ou trottoir détérioré",
+        "Marquage au sol effacé ou illisible",
+    ]
 
     # id du signalement
     id_signalement = list(range(1, nb_points+1))
@@ -61,6 +68,15 @@ def geo_df_signalements(nb_points):
     # id utilisateur
     id_utilisateur = list(range(1, nb_points+1))
 
+    # couleur
+    dict_colors = {
+        "Pont, passerelle, trémie détérioré": "#FF2ED7",
+        "Chaussée ou trottoir détérioré": "#FF2E2E",
+        "Marquage au sol effacé ou illisible": "#2E9FFF",
+    }
+    # initialisation de la colonne color
+    color = type_signalement
+
     cols = [
         'id_signalement',
         'ts',
@@ -71,6 +87,7 @@ def geo_df_signalements(nb_points):
         'prénom',
         'nom',
         'id_utilisateur',
+        'color'
         ]
 
 
@@ -84,10 +101,14 @@ def geo_df_signalements(nb_points):
         prénom,
         nom,
         id_utilisateur,
+        color,
     ]
 
     # Creation du geoDataFrame
     geo_df_signalements = gpd.GeoDataFrame({key: value_list for key, value_list in zip(cols, values_list)}, crs='EPSG:4326')
+
+    # Remplacement des types par la couleur correspondante
+    geo_df_signalements.color = geo_df_signalements.color.replace(dict_colors)
 
     return geo_df_signalements
 
