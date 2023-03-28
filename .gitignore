@@ -4,7 +4,7 @@
 server/venv
 
 # Client
-client/node_modules
+node_modules
 *.log*
 .nuxt
 .nitro
