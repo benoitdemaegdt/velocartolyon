@@ -1,8 +1,9 @@
 .idea
 
+
 # Server
 server/venv
-
+server/credentials.py
 # Client
 node_modules
 *.log*
@@ -13,3 +14,4 @@ node_modules
 .env
 dist
 .DS_Store
+
