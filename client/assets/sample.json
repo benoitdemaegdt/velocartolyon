@@ -6,12 +6,13 @@
       "properties": {
         "id_signalement": 1,
         "ts": 1679507044.8909395,
-        "type_signalement": "Véhicule épave/abandonné",
-        "description": "J'ai constaté : véhicule épave/abandonné !",
+        "type_signalement": "Pont, passerelle, trémie détérioré",
+        "description": "J'ai constaté : Pont, passerelle, trémie détérioré !",
         "civilité": "Monsieur",
         "prénom": "Rémy",
         "nom": "DE OLIVEIRA",
-        "id_utilisateur": 1
+        "id_utilisateur": 1,
+        "color": "#FF2ED7"
       },
       "geometry": { "type": "Point", "coordinates": [4.833360975735931, 45.731131239910312] }
     },
@@ -20,12 +21,13 @@
       "properties": {
         "id_signalement": 2,
         "ts": 1679257872.5509918,
-        "type_signalement": "Plaque au sol descellée, manquante...",
-        "description": "J'ai constaté : plaque au sol descellée, manquante... !",
+        "type_signalement": "Pont, passerelle, trémie détérioré",
+        "description": "J'ai constaté : Pont, passerelle, trémie détérioré !",
         "civilité": "Madame",
         "prénom": "Zoé",
         "nom": "BIGOT",
-        "id_utilisateur": 2
+        "id_utilisateur": 2,
+        "color": "#FF2ED7"
       },
       "geometry": { "type": "Point", "coordinates": [4.855913594664617, 45.716736297031268] }
     },
@@ -34,12 +36,13 @@
       "properties": {
         "id_signalement": 3,
         "ts": 1679971866.5430303,
-        "type_signalement": "Plaque au sol descellée, manquante...",
-        "description": "J'ai constaté : plaque au sol descellée, manquante... !",
+        "type_signalement": "Chaussée ou trottoir détérioré",
+        "description": "Chaussée ou trottoir détérioré... !",
         "civilité": "Madame",
         "prénom": "Aurore",
         "nom": "DUPONT",
-        "id_utilisateur": 3
+        "id_utilisateur": 3,
+        "color": "#FF2E2E"
       },
       "geometry": { "type": "Point", "coordinates": [4.878889184714176, 45.768429830754393] }
     },
@@ -53,7 +56,8 @@
         "civilité": "Monsieur",
         "prénom": "Étienne",
         "nom": "LEMAIRE",
-        "id_utilisateur": 4
+        "id_utilisateur": 4,
+        "color": "#2E9FFF"
       },
       "geometry": { "type": "Point", "coordinates": [4.813599776413779, 45.762886335024277] }
     },
@@ -62,12 +66,13 @@
       "properties": {
         "id_signalement": 5,
         "ts": 1679712450.9067369,
-        "type_signalement": "Nuisances liées à des chantiers de travaux publics",
-        "description": "J'ai constaté : nuisances liées à des chantiers de travaux publics !",
+        "type_signalement": "Marquage au sol effacé ou illisible",
+        "description": "J'ai constaté : Marquage au sol effacé ou illisible !",
         "civilité": "Madame",
         "prénom": "Dominique",
         "nom": "DOS SANTOS",
-        "id_utilisateur": 5
+        "id_utilisateur": 5,
+        "color": "#2E9FFF"
       },
       "geometry": { "type": "Point", "coordinates": [4.830796138066577, 45.765368119316221] }
     }

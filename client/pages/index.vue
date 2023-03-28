@@ -34,9 +34,50 @@ onMounted(() => {
       source: 'poi',
       paint: {
         'circle-radius': 5,
-        'circle-color': '#ef4444'
+        'circle-color': ['get', 'color'],
       }
     })
+    map.on('click', 'poi', (e) => {
+      const { properties } = e.features[0]
+      new maplibregl.Popup({ closeButton: false, closeOnClick: true })
+          .setLngLat(e.lngLat)
+          .setHTML(`
+            <h3>${properties.type_signalement}</h3>
+            <div>${properties.description}</div>
+          `)
+          .addTo(map)
+    })
+    map.on('mouseenter', 'poi', () => map.getCanvas().style.cursor = 'pointer')
+    map.on('mouseleave', 'poi', () => map.getCanvas().style.cursor = '')
   })
 })
 </script>
+
+<style>
+.mapboxgl-popup-content {
+  font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+  padding: 0;
+  width: 180px;
+}
+.mapboxgl-popup-content h3 {
+  background: #94a3b8;
+  color: #fff;
+  margin: 0;
+  padding: 10px;
+  border-radius: 3px 3px 0 0;
+  font-weight: 700;
+  margin-top: -15px;
+}
+
+.mapboxgl-popup-content div {
+  padding: 10px;
+}
+
+.mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
+  margin-top: 15px;
+}
+
+.mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
+  border-bottom-color: #91c949;
+}
+</style>
