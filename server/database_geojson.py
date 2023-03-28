@@ -3,6 +3,7 @@ import geopandas as gpd
 from shapely.geometry import Point
 import random
 from faker import Faker
+from api_trajet import get_nearest_adress, get_gps_coordinates
 
 def get_random_personne():
     fake_names = Faker('fr_FR')
