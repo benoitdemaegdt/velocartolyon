@@ -4,6 +4,7 @@
 # Server
 server/venv
 server/credentials.py
+server/velocarto.pem
 # Client
 node_modules
 *.log*
