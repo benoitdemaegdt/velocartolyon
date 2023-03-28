@@ -36,25 +36,18 @@ def define_str_point(lat_value,long_value):
 
 def call_api(start_point, end_point):
     key=API_KEY
-    url = f"https://maps.googleapis.com/maps/api/directions/json?origin={start_point}&destination={end_point}&key={key}"
+    url = f"https://maps.googleapis.com/maps/api/directions/json?origin={start_point}&destination={end_point}&mode=bicycling&key={key}"
     response = requests.get(url)
     data = response.json()
-    print(data)
-    """
-    if data['status'] == 'OK':
-        for route in data['routes']:
-            for leg in route['legs']:
-                print(f"Distance: {leg['distance']['text']}")
-                print(f"Duration: {leg['duration']['text']}")
-                print("Steps:")
-                for step in leg['steps']:
-                    print(f"{step['html_instructions']} for {step['distance']['text']} ({step['duration']['text']})")
-    else:
-        print(f"Error: {data['status']}")
-    """
-    with open('output.txt', 'w') as file:
-        # Write the JSON content to the file
-        json.dump(data, file)
+    path_steps = data["routes"][0]["legs"][0]["steps"]
+    list_coor = list()
+    for i in range(len(path_steps)):
+        if i == 0:
+            list_coor.append([path_steps[i]["start_location"]["lng"],path_steps[i]["start_location"]["lat"]])
+        list_coor.append([path_steps[i]["end_location"]["lng"],path_steps[i]["end_location"]["lat"]])
+    output_json = {"type": "Feature","geometry": {"type": "LineString","coordinates": list_coor}}
+    print(output_json)
+
 
 def get_traject(adress_start,adress_end):
     start_lat,start_long = get_gps_coordinates(address_start)
@@ -66,7 +59,7 @@ def get_traject(adress_start,adress_end):
 
 
 if __name__ == '__main__':
-    address_start = "35 Cours Emile Zola 69100 Villeurbanne"
+    address_start = "39 Cours Emile Zola 69100 Villeurbanne"
     address_end = "10 rue de Montbrillant 69003 Lyon"
     # Main function
     get_traject(address_start,address_end)
